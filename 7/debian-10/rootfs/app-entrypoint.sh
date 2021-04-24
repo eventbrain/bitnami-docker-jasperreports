@@ -10,7 +10,7 @@ if [[ "$1" == "nami" && "$2" == "start" ]] || [[ "$1" == "/init.sh" ]]; then
     info "Starting gosu... "
     if [ -d "/bitnami/jasperreports/custom-config/" ]; then
         if ! [ -z "$(ls -A /bitnami/jasperreports/custom-config/)" ]; then 
-            cp -r "/bitnami/jasperreports/custom-config/" "/opt/bitnami/jasperreports/"
+            cp -r /bitnami/jasperreports/custom-config/* /opt/bitnami/jasperreports/
         fi
     fi
 fi
