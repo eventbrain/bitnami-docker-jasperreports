@@ -23,6 +23,12 @@ if [[ "$1" = "/opt/bitnami/scripts/tomcat/run.sh" ]]; then
     /opt/bitnami/scripts/jasperreports/setup.sh
     /post-init.sh
     info "** JasperReports setup finished! **"
+    # Copy custom config from jasperreports_data volume
+    if [ -d "/bitnami/jasperreports/custom-config/" ]; then
+        if ! [ -z "$(ls -A /bitnami/jasperreports/custom-config/)" ]; then 
+            cp -r /bitnami/jasperreports/custom-config/* /opt/bitnami/jasperreports/
+        fi
+    fi
 fi
 
 echo ""
